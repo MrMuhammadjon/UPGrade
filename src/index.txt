@@ -1,6 +1,19 @@
+--------< #D model keyboard >--------
 import Spline from '@splinetool/react-spline';
 <Spline scene="https://prod.spline.design/jG4QzN6ELIGgQcbE/scene.splinecode" />
 
+----------< LOGO >---------
+https://files.ox-sys.com/cache/original/image/81/b3/7f/81b37f227eb3aa9ee19bf9614075ecbfeaf7fa94a0d02e463cd9d4a8cdb5863c.png
+
+
+----------< CARUSELS IMG >---------
+1) https://files.ox-sys.com/cache/original/image/46/54/99/46549960abe47b79f7a997f3e3aa4f70d4c51c39f793f86c95bab363cdfa3c56.png
+2) https://files.ox-sys.com/cache/original/image/1d/ec/26/1dec269863d269f59f430bbd2a6676b809eb66cb25438702b356e4e65a9e1aeb.png
+3) https://files.ox-sys.com/cache/original/image/cd/a0/a9/cda0a94fb0a342a591220bd02b4a70c8be96b984a815905d5a23a4cc605c4c32.png
+4) https://files.ox-sys.com/cache/original/image/60/80/2e/60802ed6b58b6a1d46c0df3c3f49c5c419425ec9e840b5b6e147ef52640fbb08.png
+5) https://files.ox-sys.com/cache/original/image/8f/db/65/8fdb65fdd8982b2944aeee72996a36883018a93e5024b35060d57584d885fa70.png
+
+---------< API PRODUCT >-----------
     {
       "id": 1,
       "title": "Essence Mascara Lash Princess",
@@ -61,3 +74,4 @@ import Spline from '@splinetool/react-spline';
       ],
       "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
     }
+
