@@ -75,3 +75,10 @@ https://files.ox-sys.com/cache/original/image/81/b3/7f/81b37f227eb3aa9ee19bf9614
       "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
     }
 
+          <div className="flex items-center gap-4 text-white text-xl">
+            {["wallet", "heart", "shopping-bag", "message-square-dots"].map((icon, i) => (
+              <Link to="/" key={i}>
+                <i className={`bx bx-${icon}`}></i>
+              </Link>
+            ))}
+          </div>

@@ -3,15 +3,18 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { Provider } from 'react-redux'
-import  store from './app/store.js'
+import store from './app/store.js'
 import { AppContextProvider } from './Context/AppContext.jsx'
+import { BrowserRouter } from 'react-router-dom'  // 👈 Qo'shish kerak
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
-     <AppContextProvider>
-       <App />
-     </AppContextProvider>
+      <AppContextProvider>
+        <BrowserRouter> {/* ✅ Buni qo‘shish kerak */}
+          <App />
+        </BrowserRouter>
+      </AppContextProvider>
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>
 )
