@@ -7,16 +7,11 @@ import { AppContextProvider } from "./Context/AppContext"
 const App = () => {
     return (
         <>
-        <AppContextProvider>
-
-            <Navbar />
-            <main>
-                
+            <AppContextProvider>
+                <Navbar />
                 <Outlet />
-            </main >
-            <Footer/>
-
-        </AppContextProvider>
+                <Footer />
+            </AppContextProvider>
         </>
     )
 }
