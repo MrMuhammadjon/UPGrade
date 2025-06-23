@@ -6,14 +6,14 @@ const Footer = () => {
   const { DarkMode } = useAppContext();
 
   const WebLink = [
-    { name: 'instagram', link: '/instagram', id: 1 },
-    { name: 'youtube', link: '/youtube', id: 2 },
-    { name: 'facebook', link: '/facebook', id: 3 },
-    { name: 'twitter', link: '/twitter', id: 4 }
+    // { name: 'instagram', link: '/instagram', id: 1 },
+    // { name: 'youtube', link: '/youtube', id: 2 },
+    // { name: 'facebook', link: '/facebook', id: 3 },
+    // { name: 'twitter', link: '/twitter', id: 4 }
   ];
 
   return (
-    <div className={`text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32 bottom-0 ${DarkMode ? 'bg-black' : 'bg-white'}`}>
+    <div className={`text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 bottom-0 ${DarkMode ? 'bg-black' : 'bg-white'}`}>
       <div className='flex flex-wrap justify-between gap-12 md:gap-6'>
         <div className='max-w-80'>
           {DarkMode ? (

@@ -1,9 +1,10 @@
 import React from 'react'
+import { Promotional } from '../Components/PageComponents/Promotional'
 
-const Home = () => {
+export const Home = () => {
   return (
-    <div>Home</div>
+    <>
+    <Promotional/>
+    </>
   )
 }
-
-export default Home
