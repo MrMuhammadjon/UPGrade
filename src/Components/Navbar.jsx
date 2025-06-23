@@ -108,12 +108,12 @@ const Navbar = () => {
                   ></box-icon>
                 </Link>
               ) : (
-                <div className="flex items-center justify-end gap-1">
+                <Link to='/' className="flex items-center justify-end gap-1">
                   <h1>salom</h1>
                   {
                     DarkMode ? (<box-icon name='user-circle' type='solid' color='white' size='40px'></box-icon>) : (<box-icon name='user-circle' type='solid' size='40px'></box-icon>)
                   }
-                </div>
+                </Link>
               )
 
               }
@@ -130,10 +130,8 @@ const Navbar = () => {
               <Link key={index} to={item.link}>
                 <div
                   className={`flex items-center gap-2 px-3 py-2 rounded relative
-  ${isActive ? 'bg-[#FF0096] text-white' : DarkMode ? 'text-white' : 'text-black'}
-  hover:text-[#FF0096] transition`}
-
-                >
+                     ${isActive ? 'bg-[#FF0096] text-white' : DarkMode ? 'text-white' : 'text-black'}
+                    hover:text-[#FF0096] transition`} >
                   {item.icon && (
                     <box-icon
                       name={item.icon}

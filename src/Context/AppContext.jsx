@@ -6,7 +6,7 @@ export const AppContext = createContext()
 
 export const AppContextProvider = ({ children }) => {
     
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(true)
 
     const [DarkMode, setDarkMode] = useState(() => {
         return localStorage.getItem('theme') === 'dark';
