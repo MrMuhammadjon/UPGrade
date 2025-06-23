@@ -1,1 +1,78 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+}
+
+
+.dark-mode #header {
+    background-color: black;
+    transition: 0.3s;
+}
+
+.light-mode #header {
+    background-color: white;
+    transition: 0.3s;
+    color: black;
+}
+
+
+.light-mode #top-bar {
+    background-color: white;
+    transition: 0.3s;
+    color: black;
+}
+
+.dark-mode #top-bar {
+    background-color: black;
+    transition: 0.3s;
+    color: white;
+}
+
+
+.dark-mode #boxIcons {
+    color: white;
+}
+
+#header {
+    box-shadow: 0 0 0 black;
+    animation: pulseWin 2s infinite;
+}
+
+#header:hover {
+    animation: none;
+}
+
+@keyframes pulseWin {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 150, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 0, 150, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 150, 0);
+    }
+}

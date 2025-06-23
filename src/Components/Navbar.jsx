@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import 'boxicons'
+import { useAppContext } from '../Context/AppContext';
 
 const Navbar = () => {
+  const location = useLocation();
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { DarkMode, setDarkMode, user, setUser } = useAppContext()
+
 
   const controlNavbar = () => {
     if (window.scrollY > lastScrollY) {
@@ -32,19 +35,24 @@ const Navbar = () => {
     { name: 'English', code: 'en' },
   ];
 
-  // const [selectedLanguage, setSelectedLanguage] = useState(language[0].code);
+  const HeadElements = [
+    { title: 'uzd/usd', icon: 'wallet', id: 1 },
+    { title: 'Сравнение', icon: 'slider-alt', navigate: '/compare', id: 2 },
+    { title: 'Избранное', icon: 'heart', navigate: '/favorites', id: 3 },
+    { title: 'Корзина', icon: 'cart', navigate: '/cart', id: 4 },
+    { title: 'Контакты', icon: 'phone', navigate: '/contacts', id: 5 },
+  ];
 
-  // const { t, i18n } = useTranslation();
+  const menuItems = [
+    { title: 'Каталог', icon: 'grid-alt', active: true, link: '/catalog' },
+    { title: 'Конфигуратор', icon: 'cog', active: false, link: '/configurator' },
+    { title: 'Купить компьютер', icon: 'desktop', active: false, link: '/buy-computer' },
+    { title: 'Новинки', active: false, link: '/new' },
+    { title: 'HyperX', underline: true, link: '/hyperx' },
+    { title: 'Все бренды', underline: true, link: '/brands' },
+  ];
 
-  // const handleChangeLocation = (e) => {
-  //   setSelectedLocation(e.target.value);
-  // };
 
-  // const handleChangeLanguage = (e) => {
-  //   const newLang = e.target.value;
-  //   setSelectedLanguage(newLang);
-  //   i18n.changeLanguage(newLang);
-  // };
 
   const [open, setOpen] = useState(false);
 
@@ -52,79 +60,98 @@ const Navbar = () => {
 
 
   return (
-
-    <header className={`fixed top-0 left-0 w-full z-50 bg-white shadow transition-transform duration-300 ${show ? "translate-y-0" : "-translate-y-full"}`}>
-      <div className="bg-[#06030F] py-3">
-        <div className="w-[90%] h-[80px] mx-auto flex flex-col items-center justify-between">
-          <div className="w-full h-auto flex items-center justify-between">
+    <>
+      <header id='header' className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${show ? "translate-y-0" : "-translate-y-full"}`}>
+        <div className="py-3">
+          <div className="w-[90%] mx-auto flex items-center justify-between h-15 gap-8">
             <div className="flex-1">
-              <div className=" flex items-center justify-satart ">
-                <button
-                  onClick={toggleDropdown}
-                  className="text-white px-4 py-2 rounded flex items-center space-x-1"
-                >
-                  <span>RU</span> / <span>$</span>
-                  <span className="ml-1 text-[#77BE1D]">▲</span>
+              <Link to={'/'}>
+                {DarkMode ? (<img className='w-[200px]' src="https://files.ox-sys.com/cache/original/image/81/b3/7f/81b37f227eb3aa9ee19bf9614075ecbfeaf7fa94a0d02e463cd9d4a8cdb5863c.png" alt="" />) : (<img className='w-[200px]' src="https://files.ox-sys.com/cache/original/image/83/42/50/8342504bbf1b88f7a8e05dd42a7f5b551d99b8bd1e8c0e16fef225962385f14e.png" alt="" />)}
+              </Link>
+            </div>
+            <div className="flex-2 flex items-center justify-start">
+              <form action="" className='w-90 group'>
+                <div className="w-[100%] border rounded-sm flex items-center justify-start h-9 p-2">
+                  <input type="search" placeholder='Search...' className='w-full h-full outline-0 text-[#FF0096]' />
+                  <div className="h-full flex items-center ">
+                    <box-icon name="search" className="group-hover:rotate-90 transition-[0.3s]" color={DarkMode ? 'white' : 'black'}></box-icon>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="flex flex-2 items-center justify-end gap-3">
+              {HeadElements.map(item => (
+                <Link key={item.id} to={item.navigate || '#'}>
+                  <div className="flex flex-col items-center group transition">
+                    <box-icon
+                      name={item.icon}
+                      color={DarkMode ? 'white' : 'black'}
+                      className="transition-transform group-hover:-translate-y-1"
+                    ></box-icon>
+                    <span className="group-hover:text-[#FF0096] transition">{item.title}</span>
+                  </div>
+                </Link>
+              ))}
+              <div className='flex items-center justify-center'>
+                <button className='flex items-center justify-center h-full ' onClick={() => setDarkMode(!DarkMode)}>
+                  {DarkMode ? (<box-icon name="sun" color="#fff" className='hover:rotate-90 transition-[0.3s]' size='30px'></box-icon>) : (<box-icon name="moon" className='hover:rotate-280 transition-[0.3s]' size='30px'></box-icon>)}
                 </button>
+              </div>
+              {!user ? (
+                <Link to="/login" className="flex items-center group">
+                  <h1>Login</h1>
+                  <box-icon
+                    name="user"
+                    size="30px"
+                    className="group-hover:rotate-90 transition-[0.3s]"
+                    color={DarkMode ? 'white' : 'black'}
+                  ></box-icon>
+                </Link>
+              ) : (
+                <div className="flex items-center justify-end gap-1">
+                  <h1>salom</h1>
+                  {
+                    DarkMode ? (<box-icon name='user-circle' type='solid' color='white' size='40px'></box-icon>) : (<box-icon name='user-circle' type='solid' size='40px'></box-icon>)
+                  }
+                </div>
+              )
 
-                <AnimatePresence>
-                  {open && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute top-16 bg-gray-800 rounded-lg shadow-lg p-3 w-40 z-50 borde flex flex-col items-center justify-center gap-3"
-                    >
-                      <div className="flex justify-between gap-2">
-                        <button className="bg-lime-500 text-white px-3 py-1 rounded"> Uz </button>
-                        <button className="bg-gray-900 text-white px-3 py-1 rounded"> Ru </button>
-                        <button className="bg-gray-900 text-white px-3 py-1 rounded"> En </button>
-                      </div>
-                      <div className="flex justify-between gap-2">
-                        <button className="bg-lime-500 text-white px-3 py-1 rounded"> $ </button>
-                        <button className="bg-gray-900 text-white px-3 py-1 rounded"> € </button>
-                        <button className="bg-gray-900 text-white px-3 py-1 rounded"> ₽ </button>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              }
             </div>
-            <div className="flex-2 flex items-center justify-center">
-              <ul className='flex gap-3 text-white'>
-                <a href="">
-                  Накопительный
-                </a>
-                <a href="">
-                  Отзывы
-                </a>
-                <a href="">
-                  Гарантии
-                </a>
-                <a href="">
-                  Как купить
-                </a>
-                <a href="">
-                  Накопительная
-                </a>
-              </ul>
-            </div>
-            <div className="flex-1 flex items-center justify-end">
-              <h1></h1>
-              <div className="">
-                <img src="" alt="Avatar" />
-              </div>
-            </div>
-          </div>
-          <div className="">
-            <div className=""></div>
-            <div className=""></div>
-            <div className=""></div>
           </div>
         </div>
+      </header>
+      <div className={`${DarkMode ? 'bg-black' : 'bg-white'} flex items-center justify-center py-2`}>
+        <div id='top-bar' className={`flex gap-4 items-center justifey-start py-3 w-[90%] h-[100%] ${show ? "mt-20" : "mt-0"}`}>
+          {menuItems.map((item, index) => {
+            const isActive = location.pathname === item.link;
+
+            return (
+              <Link key={index} to={item.link}>
+                <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded relative
+  ${isActive ? 'bg-[#FF0096] text-white' : DarkMode ? 'text-white' : 'text-black'}
+  hover:text-[#FF0096] transition`}
+
+                >
+                  {item.icon && (
+                    <box-icon
+                      name={item.icon}
+                      color={isActive ? 'white' : '#FF0096'}
+                    ></box-icon>
+                  )}
+                  <span className="text-sm font-medium">{item.title}</span>
+
+                  {item.underline && (
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FF0096] rounded"></span>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
-    </header>
+    </>
   );
 };
 

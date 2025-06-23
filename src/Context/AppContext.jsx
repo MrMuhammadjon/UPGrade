@@ -1,20 +1,29 @@
 'use strict';
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const AppContext = createContext()
 
-export const AppContextProvider = ({children}) => {
-    const [user, setUser] = useState(()=>{
-        const saveUser = localStorage.getItem('user');
-        return saveUser
-    })
+export const AppContextProvider = ({ children }) => {
+    
+    const [user, setUser] = useState(null)
 
-    const ContextValue ={
-        user, setUser,
+    const [DarkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem('theme') === 'dark';
+    });
+
+    useEffect(() => {
+        const modeClass = DarkMode ? 'dark-mode' : 'light-mode';
+        document.body.className = modeClass;
+        localStorage.setItem('theme', DarkMode ? 'dark' : 'light');
+    }, [DarkMode]);
+
+
+    const ContextValue = {
+        user, setUser, DarkMode, setDarkMode
     }
 
-    return(
+    return (
         <AppContext.Provider value={ContextValue}>
             {children}
         </AppContext.Provider>
