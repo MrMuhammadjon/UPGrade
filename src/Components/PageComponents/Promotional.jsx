@@ -52,7 +52,7 @@ export const Promotional = () => {
                 }
             `}</style>
 
-            <div className="overflow-hidden relative w-[90%] mx-auto select-none bg-black">
+            <div className={`overflow-hidden relative w-[90%] mx-auto select-none mt-18 ${DarkMode ? 'bg-black' : 'bg-white'}`}>
                 <div className={`absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r to-transparent ${DarkMode ? 'from-[#000000]' : 'from-[#ffffff]'}`} />
                 <div className="marquee-inner flex will-change-transform min-w-[200%]" style={{ animationDuration: "15s" }}>
                     <div className="flex">

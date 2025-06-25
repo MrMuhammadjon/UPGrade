@@ -61,9 +61,8 @@ const Navbar = () => {
 
   return (
     <>
-      <header id='header' className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${show ? "translate-y-0" : "-translate-y-full"}`}>
-        <div className="py-3">
-          <div className="w-[90%] mx-auto flex items-center justify-between h-15 gap-8">
+      <header id='header' className={`fixed top-0 left-0 w-[100%] h-20 z-50 transition-transform duration-300 flex items-center justify-center m-auto ${show ? "translate-y-0" : "-translate-y-full"}`}>
+          <div className="w-[90%] m-auto flex items-center justify-between max-w-[1400px] h-15 gap-8">
             <div className="flex-1">
               <Link to={'/'}>
                 {DarkMode ? (<img className='w-[200px]' src="https://files.ox-sys.com/cache/original/image/81/b3/7f/81b37f227eb3aa9ee19bf9614075ecbfeaf7fa94a0d02e463cd9d4a8cdb5863c.png" alt="" />) : (<img className='w-[200px]' src="https://files.ox-sys.com/cache/original/image/83/42/50/8342504bbf1b88f7a8e05dd42a7f5b551d99b8bd1e8c0e16fef225962385f14e.png" alt="" />)}
@@ -108,7 +107,7 @@ const Navbar = () => {
                   ></box-icon>
                 </Link>
               ) : (
-                <Link to='/' className="flex items-center justify-end gap-1">
+                <Link to='/profil' className="flex items-center justify-end gap-1">
                   <h1>salom</h1>
                   {
                     DarkMode ? (<box-icon name='user-circle' type='solid' color='white' size='40px'></box-icon>) : (<box-icon name='user-circle' type='solid' size='40px'></box-icon>)
@@ -119,17 +118,16 @@ const Navbar = () => {
               }
             </div>
           </div>
-        </div>
       </header>
-      <div className={`${DarkMode ? 'bg-black' : 'bg-white'} flex items-center justify-center py-2`}>
-        <div id='top-bar' className={`flex gap-4 items-center justifey-start py-3 w-[90%] h-[100%] ${show ? "mt-20" : "mt-0"}`}>
+      <div className={`${DarkMode ? 'bg-black' : 'bg-white'} flex items-center justify-center py-2 max-w-[1400px] m-auto`}>
+        <div id='top-bar' className={`flex gap-4 items-center justifey-start py-3 w-[100%] h-[100%] mt-20`}>
           {menuItems.map((item, index) => {
             const isActive = location.pathname === item.link;
 
             return (
               <Link key={index} to={item.link}>
                 <div
-                  className={`flex items-center gap-2 px-3 py-2 rounded relative
+                  className={`flex items-center gap-2 py-2 rounded relative justifey-start
                      ${isActive ? 'bg-[#FF0096] text-white' : DarkMode ? 'text-white' : 'text-black'}
                     hover:text-[#FF0096] transition`} >
                   {item.icon && (

@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className={`text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 bottom-0 ${DarkMode ? 'bg-black' : 'bg-white'}`}>
+    <div className={`text-gray-500/80 pt-8 bottom-0 max-w-[1400px] m-auto mt-18 ${DarkMode ? 'bg-black' : 'bg-white'}`}>
       <div className='flex flex-wrap justify-between gap-12 md:gap-6'>
         <div className='max-w-80'>
           {DarkMode ? (
@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className='text-lg text-gray-800 dark:text-white'>COMPANY</p>
+          <p className={`text-lg text-gray-800 ${DarkMode ? 'text-white': 'text-black'}`}>COMPANY</p>
           <ul className='mt-3 flex flex-col gap-2 text-sm'>
             <li><Link to="#">About</Link></li>
             <li><Link to="#">Careers</Link></li>
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className='text-lg text-gray-800 dark:text-white'>SUPPORT</p>
+          <p className={`text-lg text-gray-800 ${DarkMode ? 'text-white': 'text-black'}`}>SUPPORT</p>
           <ul className='mt-3 flex flex-col gap-2 text-sm'>
             <li><Link to="#">Help Center</Link></li>
             <li><Link to="#">Safety Information</Link></li>
@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
 
         <div className='max-w-80'>
-          <p className='text-lg text-gray-800 dark:text-white'>STAY UPDATED</p>
+          <p className={`text-lg text-gray-800 ${DarkMode ? 'text-white': 'text-black'}`}>STAY UPDATED</p>
           <p className='mt-3 text-sm'>
             Subscribe to our newsletter for inspiration and special offers.
           </p>
